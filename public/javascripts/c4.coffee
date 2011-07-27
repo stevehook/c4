@@ -1,12 +1,12 @@
 class GameBoard
   @defaults = { gridWidth: 7, gridHeight: 7, cellSize: 80 }
   constructor: (canvas, overlayCanvas, options) ->
-    @options = $.extend(@defaults, options)
+    @options = $.extend GameBoard.defaults, options
     @grid = [[], [], [], [], [], [], []]
     @canvas = $ canvas
     @overlayCanvas = $ overlayCanvas
-    @ctxt = @canvas[0].getContext '2d'
-    @overlayCtxt = @overlayCanvas[0].getContext '2d'
+    @context = @canvas[0].getContext '2d'
+    @overlayContext = @overlayCanvas[0].getContext '2d'
     @nextColour = 0
     @overlayCanvas.click $.proxy(this.clicked, this)
     @drawFrame()

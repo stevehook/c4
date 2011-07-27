@@ -7,12 +7,12 @@
       cellSize: 80
     };
     function GameBoard(canvas, overlayCanvas, options) {
-      this.options = $.extend(this.defaults, options);
+      this.options = $.extend(GameBoard.defaults, options);
       this.grid = [[], [], [], [], [], [], []];
       this.canvas = $(canvas);
       this.overlayCanvas = $(overlayCanvas);
-      this.ctxt = this.canvas[0].getContext('2d');
-      this.overlayCtxt = this.overlayCanvas[0].getContext('2d');
+      this.context = this.canvas[0].getContext('2d');
+      this.overlayContext = this.overlayCanvas[0].getContext('2d');
       this.nextColour = 0;
       this.overlayCanvas.click($.proxy(this.clicked, this));
       this.drawFrame();
