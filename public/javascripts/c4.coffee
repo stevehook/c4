@@ -9,10 +9,37 @@ class GameBoard
     @overlayContext = @overlayCanvas[0].getContext '2d'
     @nextColour = 0
     @overlayCanvas.click $.proxy(this.clicked, this)
+    @overlayCanvas.mousemove $.proxy(this.mouseMove, this)
+    @overlayCanvas.mouseleave $.proxy(this.mouseLeave, this)
+    @highlightColumn = -1
     @drawFrame()
 
   clicked: (e) ->
     this.move Math.floor(e.offsetX/@options.cellSize)
+
+  mouseMove: (e) ->
+    highlightColumn = Math.floor e.offsetX/@options.cellSize
+    if highlightColumn != @highlightColumn
+      @highlight(highlightColumn)
+      console.log 'highlight column ' + @highlightColumn
+
+  highlight: (column) ->
+    if @highlightColumn > -1 && @highlightColumn < @options.gridWidth
+      @context.fillStyle = '#fff'
+      @fillEllipse(((@highlightColumn + 1) * @options.cellSize) - (@options.cellSize/2), 
+        ((@options.gridHeight - @grid[@highlightColumn].length) * @options.cellSize) - (@options.cellSize/2),
+        (@options.cellSize * 4/10) + 1)
+    if @nextColour == 0
+      @context.fillStyle = "rgba(255, 0, 0, 0.25)"
+    else
+      @context.fillStyle = "rgba(255, 255, 0, 0.25)"
+    @highlightColumn = column
+    @fillEllipse(((@highlightColumn + 1) * @options.cellSize) - (@options.cellSize/2), 
+      ((@options.gridHeight - @grid[@highlightColumn].length) * @options.cellSize) - (@options.cellSize/2),
+      (@options.cellSize * 4/10) + 1)
+
+  mouseLeave: (e) ->
+    console.log 'mouseLeave'
 
   drawFrame: ->
     for x in [1..7]
