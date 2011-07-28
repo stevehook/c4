@@ -95,7 +95,7 @@ class GameBoard
     this.animateMove($.proxy(this.start, this), @options.cellSize/4, (7 - countersInColumn) * 4, column, colour)
 
 $ ->
-  gameBoard = new GameBoard($('#canvas'), $('#canvasOverlay'), {
+  window.gameBoard = new GameBoard($('#canvas'), $('#canvasOverlay'), {
     afterMove: (grid) ->
       console.log 'After move: '
       console.log grid

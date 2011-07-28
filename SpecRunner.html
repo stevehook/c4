@@ -7,21 +7,24 @@
   <script type="text/javascript" src="public/javascripts/jasmine/jasmine.js"></script>
   <script type="text/javascript" src="public/javascripts/jasmine/jasmine-html.js"></script>
 
-  <!-- include source files here... -->
   <script type="text/javascript" src="public/javascripts/jquery-1.4.2.js"></script>
   <script type="text/javascript" src="public/javascripts/c4.js"></script>
 
-  <!-- include spec files here... -->
   <script type="text/javascript" src="spec/spec_helper.js"></script>
   <script type="text/javascript" src="spec/c4.js"></script>
 
 </head>
 <body>
 
-<script type="text/javascript">
-  jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
-  jasmine.getEnv().execute();
-</script>
+  <script type="text/javascript">
+    jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+    jasmine.getEnv().execute();
+  </script>
+
+  <div id="canvasContainer" style="position: relative">
+    <canvas id="canvasOverlay" width="560" height="560" style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
+    <canvas id="canvas" width="560" height="560" style="position: absolute; left: 0; top: 0; border: 1px solid #ddd; z-index: 1;"></canvas>
+  </div>
 
 </body>
 </html>

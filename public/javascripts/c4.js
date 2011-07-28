@@ -118,8 +118,7 @@ GameBoard = (function() {
   return GameBoard;
 })();
 $(function() {
-  var gameBoard;
-  return gameBoard = new GameBoard($('#canvas'), $('#canvasOverlay'), {
+  return window.gameBoard = new GameBoard($('#canvas'), $('#canvasOverlay'), {
     afterMove: function(grid) {
       console.log('After move: ');
       return console.log(grid);
