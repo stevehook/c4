@@ -16,15 +16,15 @@
 </head>
 <body>
 
+  <div id="canvasContainer" style="position: relative; left: 5000px;">
+    <canvas id="canvasOverlay" width="560" height="560" style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
+    <canvas id="canvas" width="560" height="560" style="position: absolute; left: 0; top: 0; border: 1px solid #ddd; z-index: 1;"></canvas>
+  </div>
+
   <script type="text/javascript">
     jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
     jasmine.getEnv().execute();
   </script>
-
-  <div id="canvasContainer" style="position: relative">
-    <canvas id="canvasOverlay" width="560" height="560" style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
-    <canvas id="canvas" width="560" height="560" style="position: absolute; left: 0; top: 0; border: 1px solid #ddd; z-index: 1;"></canvas>
-  </div>
 
 </body>
 </html>

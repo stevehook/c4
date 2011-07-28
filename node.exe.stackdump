@@ -1,9 +1,0 @@
-Exception: STATUS_ACCESS_VIOLATION at eip=610CA055
-eax=00B3CE64 ebx=FFFFFFD9 ecx=76673F2C edx=1971CBF0 esi=61169220 edi=00000000
-ebp=1971CD38 esp=1971CC60 program=C:\node\bin\node.exe, pid 12136, thread sig
-cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
-Stack trace:
-Frame     Function  Args
-1971CD38  610CA055  (61169220, 00000000, 00000000, 00000000)
-1971CD68  61003F51  (00000000, 00000000, 00000000, 61004A63)
-End of stack trace

@@ -117,11 +117,3 @@ GameBoard = (function() {
   };
   return GameBoard;
 })();
-$(function() {
-  return window.gameBoard = new GameBoard($('#canvas'), $('#canvasOverlay'), {
-    afterMove: function(grid) {
-      console.log('After move: ');
-      return console.log(grid);
-    }
-  });
-});

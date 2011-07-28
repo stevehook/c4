@@ -11,5 +11,14 @@
     <canvas id="canvasOverlay" width="560" height="560" style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
     <canvas id="canvas" width="560" height="560" style="position: absolute; left: 0; top: 0; border: 1px solid #ddd; z-index: 1;"></canvas>
   </div>
+  <script type="text/javascript">
+    $(function() { return window.gameBoard = new GameBoard($('#canvas'), $('#canvasOverlay'), {
+        afterMove: function(grid) {
+          console.log('After move: ');
+          return console.log(grid);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
