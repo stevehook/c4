@@ -5,3 +5,21 @@
  *= require_self
  *= require_tree . 
 */
+
+#canvasContainer {
+  position: relative;
+}
+
+#canvasOverlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+
+#canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
