@@ -3,4 +3,3 @@
 #= require jasmine-html
 #= require spec_helper
 #= require_tree .
-
