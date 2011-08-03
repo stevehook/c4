@@ -1,0 +1,11 @@
+%div#canvasContainer
+  %canvas#canvasOverlay{ width: 560, height: 560 }
+  %canvas#canvas{ width: 560, height: 560 }
+:javascript
+  $(function() { return window.gameBoard = new GameBoard($('#canvas'), $('#canvasOverlay'), {
+      afterMove: function(grid) {
+        console.log('After move: ');
+        return console.log(grid);
+      }
+    });
+  });
