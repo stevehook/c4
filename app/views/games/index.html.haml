@@ -1,4 +1,4 @@
 %div#homePanel
   %div.welcomeMessage Press Start to play
-  - form_for(Game.new) do |f|
+  = form_for(Game.new) do |f|
     = f.submit('Start')
