@@ -1,6 +1,7 @@
 %div#canvasContainer
   %canvas#canvasOverlay{ width: 560, height: 560 }
   %canvas#canvas{ width: 560, height: 560 }
+  %div.clear
 :javascript
   $(function() { return window.gameBoard = new GameBoard($('#canvas'), $('#canvasOverlay'), {
       afterMove: function(grid) {
