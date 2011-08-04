@@ -9,18 +9,7 @@
 body {
   margin: 0px;
   font-family: Calibri, Arial;
-  background-color: #e8e8e8;
-}
-
-#container {
-  max-width: 960px;
-  /* height: auto;*/
-  margin: 0px auto 0px;
-  background-color: #fff;
-  padding: 5px;
-  -moz-box-shadow: 0 0 5px 5px #AAA;
-  -webkit-box-shadow: 0 0 5px 5px #AAA;
-  box-shadow: 0 0 5px 5px #AAA;
+  background-color: #a8a8a8;
 }
 
 #canvasContainer {
@@ -31,9 +20,9 @@ body {
   margin: 0px auto 0px;
   background-color: #fff;
   padding: 5px;
-  -moz-box-shadow: 0 0 5px 5px #AAA;
-  -webkit-box-shadow: 0 0 5px 5px #AAA;
-  box-shadow: 0 0 5px 5px #AAA;
+  -moz-box-shadow: 0 0 8px 8px #fff;
+  -webkit-box-shadow: 0 0 8px 8px #fff;
+  box-shadow: 0 0 8px 8px #fff;
 }
 
 .clear {
