@@ -17,6 +17,7 @@ window.GameBoard = class GameBoard
     @nextColour = 0
     @highlightColumn = -1
     @grid = [[], [], [], [], [], [], []]
+    @moves = []
     @active = true
 
   activate: (active) ->
@@ -80,7 +81,6 @@ window.GameBoard = class GameBoard
       callback.call(self, counter, column, colour) if callback
       if counter >= iterations
         clearInterval(interval)
-        board.options.afterMove(board.grid) if board.options.afterMove
     , delay)
 
   start: (counter, column, colour) ->
@@ -100,7 +100,9 @@ window.GameBoard = class GameBoard
       @nextColour = 0
     countersInColumn = @grid[column].length
     return if (countersInColumn >= 7)
-    @grid[column].push(colour)
+    @grid[column].push colour
+    @moves.push [colour, column]
+    @options.afterMove(@grid) if @options.afterMove
     this.animateMove($.proxy(this.start, this), @options.cellSize/4, (7 - countersInColumn) * 4, column, colour)
 
 

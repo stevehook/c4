@@ -11,28 +11,33 @@ describe 'C4', ->
   it 'first move should be red', ->
     gameBoard.move 0
     expect(gameBoard.grid).toEqual [['red'], [], [], [], [], [], []]
+    expect(gameBoard.moves).toEqual [['red', 0]]
 
   it 'second move should be yellow', ->
     gameBoard.move 0
     gameBoard.move 1
     expect(gameBoard.grid).toEqual [['red'], ['yellow'], [], [], [], [], []]
+    expect(gameBoard.moves).toEqual [['red', 0], ['yellow', 1]]
 
   it 'second move in the same column should be in second row', ->
     gameBoard.move 0
     gameBoard.move 0
     expect(gameBoard.grid).toEqual [['red', 'yellow'], [], [], [], [], [], []]
+    expect(gameBoard.moves).toEqual [['red', 0], ['yellow', 0]]
 
   it 'mouse click on the first column should trigger a move', ->
     event = new $.Event('click')
     event.offsetX = 0
     $('#canvasOverlay').trigger(event)
     expect(gameBoard.grid).toEqual [['red'], [], [], [], [], [], []]
+    expect(gameBoard.moves).toEqual [['red', 0]]
 
   it 'mouse click on the second column should trigger a move', ->
     event = new $.Event('click')
     event.offsetX = 100
     $('#canvasOverlay').trigger(event)
     expect(gameBoard.grid).toEqual [[], ['red'], [], [], [], [], []]
+    expect(gameBoard.moves).toEqual [['red', 1]]
 
   it 'move should trigger afterMove event', ->
     event = new $.Event('click')
@@ -47,4 +52,5 @@ describe 'C4', ->
     event.offsetX = 0
     $('#canvasOverlay').trigger(event)
     expect(gameBoard.grid).toEqual [[], [], [], [], [], [], []]
+    expect(gameBoard.moves).toEqual []
 
