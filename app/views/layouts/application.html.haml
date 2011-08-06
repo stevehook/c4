@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title= C4
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = javascript_include_tag "c4"
+    = csrf_meta_tags
+  %body
+    %div.header
+    %div.document
+      = yield
+

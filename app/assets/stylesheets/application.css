@@ -9,7 +9,20 @@
 body {
   margin: 0px;
   font-family: Calibri, Arial;
-  background-color: #a8a8a8;
+  background-color: #888;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  height: 5em;
+  background: #222 none no-repeat scroll;
+  width: 100%;
+  z-index: 4;
+}
+
+.document {
+  margin-top: 6em;
 }
 
 #canvasContainer {
@@ -23,6 +36,24 @@ body {
   -moz-box-shadow: 0 0 8px 8px #fff;
   -webkit-box-shadow: 0 0 8px 8px #fff;
   box-shadow: 0 0 8px 8px #fff;
+}
+
+#homePanel {
+  position: relative;
+  max-width: 550px;
+  /* height: auto;*/
+  margin: 0px auto 0px;
+  background-color: #aaa;
+  padding: 5px;
+  font-size: 150%;
+  text-align: center;
+  -moz-box-shadow: 0 0 2px 2px #999;
+  -webkit-box-shadow: 0 0 2px 2px #999;
+  box-shadow: 0 0 2px 2px #999;
+}
+
+#homePanel input {
+  font-size: 250%;
 }
 
 .clear {
