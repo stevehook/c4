@@ -101,7 +101,6 @@ window.GameBoard = class GameBoard
     countersInColumn = @grid[column].length
     return if (countersInColumn >= 7)
     @grid[column].push(colour)
-    @options.afterMove() if @options.afterMove
     this.animateMove($.proxy(this.start, this), @options.cellSize/4, (7 - countersInColumn) * 4, column, colour)
 
 
