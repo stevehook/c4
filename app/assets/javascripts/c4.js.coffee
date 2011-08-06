@@ -1,6 +1,7 @@
 window.GameBoard = class GameBoard
   @defaults = { gridWidth: 7, gridHeight: 7, cellSize: 80 }
   constructor: (canvas, overlayCanvas, options) ->
+    console.log 'creating new Gameboard'
     @options = $.extend GameBoard.defaults, options
     @canvas = $ canvas
     @overlayCanvas = $ overlayCanvas
@@ -25,9 +26,10 @@ window.GameBoard = class GameBoard
     @move Math.floor(e.offsetX/@options.cellSize) if @active
 
   mouseMove: (e) ->
-    highlightColumn = Math.floor e.offsetX/@options.cellSize
-    if highlightColumn != @highlightColumn
-      @highlight(highlightColumn)
+    if @active
+      highlightColumn = Math.floor e.offsetX/@options.cellSize
+      if highlightColumn != @highlightColumn
+        @highlight(highlightColumn)
 
   highlight: (column) ->
     if @highlightColumn > -1 && @highlightColumn < @options.gridWidth

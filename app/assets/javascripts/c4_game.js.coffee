@@ -1,6 +1,6 @@
 $( ->
-  window.gameBoard = new GameBoard($('#canvas'), $('#canvasOverlay'), {
+  gameBoard = new GameBoard($('#canvas'), $('#canvasOverlay'), {
     afterMove: ->
-      console.log 'moved!!!!'
+      gameBoard.activate false
   })
 )
