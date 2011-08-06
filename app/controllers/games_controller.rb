@@ -16,4 +16,9 @@ class GamesController < ApplicationController
   def show
     
   end
+
+  def update
+    @game = Game.new(params[:game])
+    render json: @game
+  end
 end

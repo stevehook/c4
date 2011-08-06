@@ -2,13 +2,15 @@ $( ->
   gameBoard = new GameBoard($('#canvas'), $('#canvasOverlay'), {
     afterMove: ->
       gameBoard.activate false
+      console.log gameBoard.grid
       $.ajax {
         dataType: "json",
         type: "POST",
-        #processData: false,
         contentType: "application/json",
-        data: gameBoard.grid
+        data: JSON.stringify { grid: gameBoard.grid }
         beforeSend: (xhr) -> xhr.setRequestHeader("X-Http-Method-Override", "PUT")
+        success: (result) ->
+          console.log result
       }
   })
 )
