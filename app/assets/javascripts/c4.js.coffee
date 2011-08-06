@@ -12,10 +12,14 @@ window.GameBoard = class GameBoard
     @overlayCanvas.mousemove $.proxy(this.mouseMove, this)
     @overlayCanvas.mouseleave $.proxy(this.mouseLeave, this)
     @highlightColumn = -1
+    @active = true
     @drawFrame()
 
+  activate: (active) ->
+    @active = active
+
   clicked: (e) ->
-    @move Math.floor(e.offsetX/@options.cellSize)
+    @move Math.floor(e.offsetX/@options.cellSize) if @active
 
   mouseMove: (e) ->
     highlightColumn = Math.floor e.offsetX/@options.cellSize
