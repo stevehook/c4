@@ -21,6 +21,10 @@ body {
   z-index: 4;
 }
 
+.header img {
+  margin: 5px 15px;
+}
+
 .document {
   margin-top: 6em;
 }
