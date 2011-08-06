@@ -20,16 +20,21 @@ describe 'C4', ->
     expect(gameBoard.grid).toEqual([['red', 'yellow'], [], [], [], [], [], []])
 
   it 'mouse click on the first column should trigger a move', ->
-    console.log $('#canvasOverlay')
     event = new $.Event('click')
     event.offsetX = 0
     $('#canvasOverlay').trigger(event)
     expect(gameBoard.grid).toEqual([['red'], [], [], [], [], [], []])
 
   it 'mouse click on the second column should trigger a move', ->
-    console.log $('#canvasOverlay')
     event = new $.Event('click')
     event.offsetX = 100
     $('#canvasOverlay').trigger(event)
     expect(gameBoard.grid).toEqual([[], ['red'], [], [], [], [], []])
+
+  it 'activate can be used to make the board unresponsive to click events', ->
+    gameBoard.activate false
+    event = new $.Event('click')
+    event.offsetX = 0
+    $('#canvasOverlay').trigger(event)
+    expect(gameBoard.grid).toEqual([[], [], [], [], [], [], []])
 
