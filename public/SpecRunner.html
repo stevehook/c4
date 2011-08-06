@@ -3,35 +3,28 @@
 <html>
 <head>
   <title>Jasmine Test Runner</title>
-  <link rel="stylesheet" type="text/css" href="/assets/jasmine.css">
+  <link rel="stylesheet" type="text/css" href="assets/jasmine.css">
+  <script type="text/javascript" src="assets/jasmine/jasmine.js"></script>
+  <script type="text/javascript" src="assets/jasmine/jasmine-html.js"></script>
 
+  <script type="text/javascript" src="assets/application.js"></script>
+  <script type="text/javascript" src="assets/c4.js"></script>
 
-  <!-- include spec files here... -->
-  <script type="text/javascript" src="/assets/specs.js"></script>
+  <script type="text/javascript" src="assets/spec_helper.js"></script>
+  <script type="text/javascript" src="assets/c4_spec.js"></script>
 
 </head>
 <body>
 
-<script type="text/javascript">
-    var jsApiReporter;
-    (function() {
-      var jasmineEnv = jasmine.getEnv();
+  <div id="canvasContainer" style="position: relative; left: 5000px;">
+    <canvas id="canvasOverlay" width="560" height="560" style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
+    <canvas id="canvas" width="560" height="560" style="position: absolute; left: 0; top: 0; border: 1px solid #ddd; z-index: 1;"></canvas>
+  </div>
 
-      jsApiReporter = new jasmine.JsApiReporter();
-      var trivialReporter = new jasmine.TrivialReporter();
-
-      jasmineEnv.addReporter(jsApiReporter);
-      jasmineEnv.addReporter(trivialReporter);
-
-      jasmineEnv.specFilter = function(spec) {
-        return trivialReporter.specFilter(spec);
-      };
-
-      window.onload = function() {
-        jasmineEnv.execute();
-      };
-    })();
-</script>
+  <script type="text/javascript">
+    jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+    jasmine.getEnv().execute();
+  </script>
 
 </body>
 </html>
