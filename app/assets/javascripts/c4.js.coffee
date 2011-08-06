@@ -2,18 +2,21 @@ window.GameBoard = class GameBoard
   @defaults = { gridWidth: 7, gridHeight: 7, cellSize: 80 }
   constructor: (canvas, overlayCanvas, options) ->
     @options = $.extend GameBoard.defaults, options
-    @grid = [[], [], [], [], [], [], []]
     @canvas = $ canvas
     @overlayCanvas = $ overlayCanvas
     @context = @canvas[0].getContext '2d'
     @overlayContext = @overlayCanvas[0].getContext '2d'
-    @nextColour = 0
+    @reset()
     @overlayCanvas.click $.proxy(this.clicked, this)
     @overlayCanvas.mousemove $.proxy(this.mouseMove, this)
     @overlayCanvas.mouseleave $.proxy(this.mouseLeave, this)
-    @highlightColumn = -1
-    @active = true
     @drawFrame()
+
+  reset: ->
+    @nextColour = 0
+    @highlightColumn = -1
+    @grid = [[], [], [], [], [], [], []]
+    @active = true
 
   activate: (active) ->
     @active = active
@@ -95,6 +98,7 @@ window.GameBoard = class GameBoard
     countersInColumn = @grid[column].length
     return if (countersInColumn >= 7)
     @grid[column].push(colour)
+    @options.afterMove() if @options.afterMove
     this.animateMove($.proxy(this.start, this), @options.cellSize/4, (7 - countersInColumn) * 4, column, colour)
 
 
