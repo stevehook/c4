@@ -35,17 +35,18 @@ window.GameBoard = class GameBoard
       @fillEllipse(((@highlightColumn + 1) * @options.cellSize) - (@options.cellSize/2),
         ((@options.gridHeight - @grid[@highlightColumn].length) * @options.cellSize) - (@options.cellSize/2),
         (@options.cellSize * 4/10) + 1)
-    if @nextColour == 0
-      @context.fillStyle = "rgba(255, 0, 0, 0.25)"
-    else
-      @context.fillStyle = "rgba(255, 255, 0, 0.25)"
     @highlightColumn = column
-    @fillEllipse(((@highlightColumn + 1) * @options.cellSize) - (@options.cellSize/2),
-      ((@options.gridHeight - @grid[@highlightColumn].length) * @options.cellSize) - (@options.cellSize/2),
-      (@options.cellSize * 4/10) + 1)
+    if column > -1
+      if @nextColour == 0
+        @context.fillStyle = "rgba(255, 0, 0, 0.25)"
+      else
+        @context.fillStyle = "rgba(255, 255, 0, 0.25)"
+      @fillEllipse(((@highlightColumn + 1) * @options.cellSize) - (@options.cellSize/2),
+        ((@options.gridHeight - @grid[@highlightColumn].length) * @options.cellSize) - (@options.cellSize/2),
+        (@options.cellSize * 4/10) + 1)
 
   mouseLeave: (e) ->
-    console.log 'mouseLeave'
+    @highlight(-1)
 
   drawFrame: ->
     for x in [1..7]
