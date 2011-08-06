@@ -16,9 +16,18 @@ body {
   position: fixed;
   top: 0;
   height: 5em;
-  background: #222 none no-repeat scroll;
+  background: #333 none no-repeat scroll;
   width: 100%;
   z-index: 4;
+  font: 100% Arial;
+}
+
+.headerTitle {
+  line-height: 48px;
+  font-size: 250%;
+  vertical-align: top;
+  color: #eee;
+  margin: 5px 0px;
 }
 
 .header img {
