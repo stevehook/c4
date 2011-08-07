@@ -22,7 +22,10 @@ class GamesController < ApplicationController
     @game.attributes = params[:game]
     @game.next_move
     @game.save!
-    logger.info "Updated game #{@game.id}"
+    # logger.info @game.grid.class
+    # logger.info @game.grid
+    # logger.info @game.moves.class
+    # logger.info @game.moves
     # TODO: make the next move
     render json: @game
   end
