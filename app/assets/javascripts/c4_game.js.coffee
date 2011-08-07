@@ -7,7 +7,7 @@ $( ->
         dataType: "json",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify { grid: gameBoard.grid }
+        data: JSON.stringify { grid: gameBoard.grid, moves: gameBoard.moves }
         beforeSend: (xhr) -> xhr.setRequestHeader("X-Http-Method-Override", "PUT")
         success: (result) ->
           console.log result

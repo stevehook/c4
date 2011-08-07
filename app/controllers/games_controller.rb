@@ -18,7 +18,11 @@ class GamesController < ApplicationController
   end
 
   def update
-    @game = Game.new(params[:game])
+    @game = Game.find(params[:id])
+    @game.attributes = params[:game]
+    @game.next_move
+    @game.save!
+    logger.info "Updated game #{@game.id}"
     # TODO: make the next move
     render json: @game
   end
