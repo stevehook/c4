@@ -9,5 +9,13 @@ describe Game do
     it "should have status :in_play" do
       @game.status.should == :in_play
     end
+
+    it "should have empty grid array" do
+      @game.grid.should == [[], [], [], [], [], [], []]
+    end
+
+    it "should have empty moves array" do
+      @game.moves.should == []
+    end
   end
 end
