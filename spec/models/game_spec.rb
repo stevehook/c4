@@ -72,4 +72,24 @@ describe Game do
       @game.status.should == :finished
     end
   end  
+
+  context "After red has four in a row diagonally (bottom-left to top-right)" do
+    before( :each ) do
+      @game = Game.new
+      @game.moves = [['red', 1], ['yellow', 2], ['red', 2], ['yellow', 3], ['red', 3], ['yellow', 2], ['red', 3], 
+        ['yellow', 4], ['red', 4], ['yellow', 4], ['red', 4]]
+      @game.grid = [[], ['red'], ['yellow', 'red', 'yellow'], ['yellow', 'red', 'red'], ['yellow', 'red', 'yellow', 'red'], [], []]
+    end
+
+    it "should have a winner" do
+      @game.evaluate_status
+      @game.winner.should == 'red'
+    end
+
+    it "should be finished" do
+      @game.evaluate_status
+      @game.status.should == :finished
+    end
+  end  
 end
+
