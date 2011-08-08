@@ -27,7 +27,7 @@ class Game < ActiveRecord::Base
   end
 
   def has_connect_four(colour)
-    has_horizontal_line(colour) || has_vertical_line(colour)
+    has_horizontal_line(colour) || has_vertical_line(colour) || has_diagonal_line(colour)
   end
 
   def has_horizontal_line(colour)
@@ -44,11 +44,34 @@ class Game < ActiveRecord::Base
     false
   end
 
+  def has_diagonal_line(colour)
+    (-3..3).each do |x|
+      return true if has_diagonal(colour, x, 1)
+    end
+    (3..9).each do |x|
+      return true if has_diagonal(colour, x, -1)
+    end
+    false
+  end
+
   def has_straight_line(colour, a, horizonal)
     counter = 0
     (0..6).each do |b|
       value = horizonal ? grid_value(a, b) : grid_value(b, a)
       if value == colour
+        counter += 1
+      else
+        counter = 0
+      end
+      return true if counter == 4
+    end
+    false
+  end
+
+  def has_diagonal(colour, x, direction)
+    counter = 0
+    (0..6).each do |y|
+      if grid_value(x + (direction * y), y) == colour
         counter += 1
       else
         counter = 0
