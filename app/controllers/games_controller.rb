@@ -20,13 +20,12 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
     @game.attributes = params[:game]
-    @game.next_move
+    @game.evaluate_status
+    if @game.status == :in_play
+      @game.next_move
+      @game.evaluate_status
+    end
     @game.save!
-    # logger.info @game.grid.class
-    # logger.info @game.grid
-    # logger.info @game.moves.class
-    # logger.info @game.moves
-    # TODO: make the next move
     render json: @game
   end
 end
