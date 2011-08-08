@@ -28,7 +28,7 @@ describe Game do
 
     it "should have a winner" do
       @game.evaluate_status
-      @game.winner.should == :red
+      @game.winner.should == 'red'
     end
 
     it "should be finished" do

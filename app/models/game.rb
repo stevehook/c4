@@ -19,7 +19,7 @@ class Game < ActiveRecord::Base
   end
 
   def evaluate_winner(colour)
-    @winner = colour if has_connect_four(colour)
+    self.winner = colour if has_connect_four(colour)
   end
 
   def evaluate_game_over
