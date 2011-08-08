@@ -19,6 +19,24 @@ describe Game do
     end
   end
 
+  context "After red has three in a row horizontally" do
+    before( :each ) do
+      @game = Game.new
+      @game.moves = [['red', 3], ['yellow', 3], ['red', 1], ['yellow', 1], ['red', 2]]
+      @game.grid = [[], ['red', 'yellow'], ['red'], ['red', 'yellow'], [], [], []]
+    end
+
+    it "should have a winner" do
+      @game.evaluate_status
+      @game.winner.should be_nil
+    end
+
+    it "should be finished" do
+      @game.evaluate_status
+      @game.status.should == :in_play
+    end
+  end  
+
   context "After red has four in a row horizontally" do
     before( :each ) do
       @game = Game.new
