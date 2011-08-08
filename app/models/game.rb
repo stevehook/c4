@@ -27,12 +27,19 @@ class Game < ActiveRecord::Base
   end
 
   def has_connect_four(colour)
-    has_horizontal_line(colour)
+    has_horizontal_line(colour) || has_vertical_line(colour)
   end
 
   def has_horizontal_line(colour)
     (0..6).each do |x|
       return true if has_straight_line(colour, x, true)
+    end
+    false
+  end
+
+  def has_vertical_line(colour)
+    (0..6).each do |y|
+      return true if has_straight_line(colour, y, false)
     end
     false
   end
