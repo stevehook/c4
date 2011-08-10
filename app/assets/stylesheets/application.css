@@ -15,7 +15,7 @@ body {
 .header {
   position: fixed;
   top: 0;
-  height: 5em;
+  height: 3.7em;
   background: #333 none no-repeat scroll;
   width: 100%;
   z-index: 4;
@@ -35,7 +35,7 @@ body {
 }
 
 .document {
-  margin-top: 6em;
+  margin-top: 7em;
 }
 
 #canvasContainer {
