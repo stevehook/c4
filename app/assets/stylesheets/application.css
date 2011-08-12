@@ -5,11 +5,14 @@
  *= require_self
  *= require_tree . 
 */
+html {
+  background: url('micro_carbon.png') repeat;
+}
 
 body {
   margin: 0px;
   font-family: Calibri, Arial;
-  background-color: #888;
+  height: 100%;
 }
 
 .header {
@@ -32,6 +35,13 @@ body {
 
 .header img {
   margin: 5px 15px;
+}
+
+.messagePanel {
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  font: 150% Arial;
 }
 
 .document {

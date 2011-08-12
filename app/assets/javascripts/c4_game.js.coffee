@@ -15,7 +15,7 @@ $( ->
             new_move = result.moves[result.moves.length - 1]
             if result.status == 'finished'
               console.log 'Game over!'
-              $('#statusMessage').text 'Game over'
+              $('.messagePanel').text 'Game over'
             else
               gameBoard.move new_move[1]
               gameBoard.activate true
