@@ -18,7 +18,7 @@ body {
 .header {
   position: fixed;
   top: 0;
-  height: 3.7em;
+  height: 60px;
   background: #333 none no-repeat scroll;
   width: 100%;
   z-index: 4;
@@ -42,10 +42,14 @@ body {
   text-align: center;
   width: 100%;
   font: 150% Arial;
+  top: 60px;
+  height: 40px;
+  color: #eee;
+  padding: 5px 0px;
 }
 
 .document {
-  margin-top: 7em;
+  margin-top: 110px;
 }
 
 #canvasContainer {
