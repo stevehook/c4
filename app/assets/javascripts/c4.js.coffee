@@ -34,8 +34,9 @@ window.GameBoard = class GameBoard
 
   highlight: (column) ->
     if @highlightColumn > -1 && @highlightColumn < @options.gridWidth
-      @context.fillStyle = '#fff'
-      @fillEllipse(((@highlightColumn + 1) * @options.cellSize) - (@options.cellSize/2),
+      @context.globalCompositeOperation = 'copy'
+      @context.fillStyle = 'rgba(0,0,0,0)'
+      @clearEllipse(((@highlightColumn + 1) * @options.cellSize) - (@options.cellSize/2),
         ((@options.gridHeight - @grid[@highlightColumn].length) * @options.cellSize) - (@options.cellSize/2),
         (@options.cellSize * 4/10) + 1)
     @highlightColumn = column
@@ -73,6 +74,12 @@ window.GameBoard = class GameBoard
     @context.closePath()
     @context.fill()
 
+  clearEllipse: (x, y, radius) ->
+    @context.beginPath()
+    @context.arc(x - 1, y - 1, radius, 0, Math.PI*2, true)
+    @context.closePath()
+    @context.fill()
+
   animateMove: (callback, delay, iterations, column, colour) ->
     counter = 0
     board = this
@@ -84,7 +91,8 @@ window.GameBoard = class GameBoard
     , delay)
 
   start: (counter, column, colour) ->
-    @context.fillStyle = '#fff'
+    @context.globalCompositeOperation = 'copy'
+    @context.fillStyle = 'rgba(0,0,0,0)'
     this.fillEllipse(((column + 1) * @options.cellSize) - (@options.cellSize/2),
       ((@options.cellSize/4) * (counter - 1)) - (@options.cellSize/2), (@options.cellSize * 4/10) + 1)
     @context.fillStyle = colour
