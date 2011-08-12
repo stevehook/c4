@@ -54,7 +54,7 @@ window.GameBoard = class GameBoard
   drawFrame: ->
     for x in [1..7]
       for y in [1..7]
-        @overlayContext.fillStyle = '#00f'
+        @overlayContext.fillStyle = '#444'
         @overlayContext.beginPath()
         @overlayContext.arc((x * @options.cellSize) - (@options.cellSize/2),
           (y * @options.cellSize) - (@options.cellSize/2),

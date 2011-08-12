@@ -54,11 +54,10 @@ body {
   min-height: 550px;
   /* height: auto;*/
   margin: 0px auto 0px;
-  background-color: #fff;
   padding: 5px;
-  -moz-box-shadow: 0 0 8px 8px #fff;
-  -webkit-box-shadow: 0 0 8px 8px #fff;
-  box-shadow: 0 0 8px 8px #fff;
+  -moz-box-shadow: 0 0 8px 8px #444;
+  -webkit-box-shadow: 0 0 8px 8px #444;
+  box-shadow: 0 0 8px 8px #444;
 }
 
 #homePanel {
