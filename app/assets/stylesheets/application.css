@@ -6,7 +6,7 @@
  *= require_tree . 
 */
 html {
-  background: url('micro_carbon.png') repeat;
+  background: #000 url('micro_carbon.png') repeat;
 }
 
 body {
@@ -46,7 +46,7 @@ body {
   top: 60px;
   height: 40px;
   color: #eee;
-  padding: 5px 0px;
+  padding: 8px 0px;
 }
 
 .document {
