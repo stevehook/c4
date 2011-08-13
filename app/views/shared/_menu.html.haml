@@ -1,7 +1,4 @@
 %ul.menu
-  %li
-    %a{ :href => new_game_path } New Game
-  %li
-    %a{ :href => new_session_path } Login
-  %li
-    %a{ :href => 'help' } Help
+  %li= link_to 'New Game', new_game_path
+  %li= link_to 'Login', new_session_path
+  %li= link_to 'Help', help_path
