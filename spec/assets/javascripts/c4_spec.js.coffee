@@ -57,17 +57,15 @@ describe 'GameBoard starting a new game', ->
 describe 'GameBoard initialised with a half-finished state', ->
   beforeEach ->
     window.moves = 0
-    if !window.gameBoard
-      window.gameBoard = new GameBoard($('#canvas'), $('#canvasOverlay'), {
-        afterMove: -> window.moves++,
-        grid: [['red'], ['yellow'], [], [], [], [], []],
-        moves: [['red', 0], ['yellow', 1]]
-      })
-    window.gameBoard.reset()
+    window.gameBoard = new GameBoard($('#canvas'), $('#canvasOverlay'), {
+      afterMove: -> window.moves++,
+      grid: [['red'], ['yellow'], [], [], [], [], []],
+      moves: [['red', 0], ['yellow', 1]]
+    })
 
   it 'gameBoard should have been created', ->
     expect(gameBoard).toBeDefined()
 
   it 'gameBoard state should have been initialised', ->
     expect(gameBoard.grid).toEqual([['red'], ['yellow'], [], [], [], [], []])
-    expect(gameBoard.moves).toEqual([['red', 0], ['yellow', 0]])
+    expect(gameBoard.moves).toEqual([['red', 0], ['yellow', 1]])

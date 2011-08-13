@@ -1,13 +1,13 @@
 window.GameBoard = class GameBoard
   @defaults = { gridWidth: 7, gridHeight: 7, cellSize: 80 }
   constructor: (canvas, overlayCanvas, options) ->
-    console.log 'creating new Gameboard'
     @options = $.extend GameBoard.defaults, options
     @canvas = $ canvas
     @overlayCanvas = $ overlayCanvas
     @context = @canvas[0].getContext '2d'
     @overlayContext = @overlayCanvas[0].getContext '2d'
     @reset()
+    this.initialiseGameState() if @options.grid && @options.moves
     @overlayCanvas.click $.proxy(this.clicked, this)
     @overlayCanvas.mousemove $.proxy(this.mouseMove, this)
     @overlayCanvas.mouseleave $.proxy(this.mouseLeave, this)
@@ -19,6 +19,10 @@ window.GameBoard = class GameBoard
     @grid = [[], [], [], [], [], [], []]
     @moves = []
     @active = true
+
+  initialiseGameState: ->
+    @grid = @options.grid
+    @moves = @options.moves
 
   activate: (active) ->
     @active = active
