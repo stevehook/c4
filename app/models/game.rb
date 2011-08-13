@@ -4,6 +4,12 @@ class Game < ActiveRecord::Base
   before_save :before_save
   after_save :after_save
 
+  def self.copy_grid(grid)
+    new_grid = []
+    grid.each { |array| new_grid.push(array.clone) }
+    new_grid
+  end
+
   def init
     if new_record?
       self.status = :in_play
