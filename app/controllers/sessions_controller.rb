@@ -7,6 +7,5 @@ class SessionsController < ApplicationController
   end
 
   def help
-
   end
 end
