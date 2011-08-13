@@ -99,10 +99,12 @@ window.GameBoard = class GameBoard
   animateMove: (callback, delay, iterations, column, colour) ->
     counter = 0
     board = this
+    afterMoveAnimation = @options.afterMoveAnimation
     interval = setInterval( ->
       counter++
       callback.call(self, counter, column, colour) if callback
       if counter >= iterations
+        afterMoveAnimation() if afterMoveAnimation
         clearInterval(interval)
     , delay)
 

@@ -5,7 +5,7 @@ window.Game = class Game
       grid: grid,
       moves: moves,
       winner: winner,
-      afterMove: $.proxy(this.afterMove, this)
+      afterMoveAnimation: $.proxy(this.afterMove, this)
     })
     @setFinished(winner) if status == 'finished'
 
