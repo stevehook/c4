@@ -7,11 +7,11 @@ window.GameBoard = class GameBoard
     @context = @canvas[0].getContext '2d'
     @overlayContext = @overlayCanvas[0].getContext '2d'
     @reset()
-    this.initialiseGameState() if @options.grid && @options.moves
     @overlayCanvas.click $.proxy(this.clicked, this)
     @overlayCanvas.mousemove $.proxy(this.mouseMove, this)
     @overlayCanvas.mouseleave $.proxy(this.mouseLeave, this)
     @drawFrame()
+    this.initialiseGameState() if @options.grid && @options.moves
 
   reset: ->
     @nextColour = 0
@@ -23,6 +23,7 @@ window.GameBoard = class GameBoard
   initialiseGameState: ->
     @grid = @options.grid
     @moves = @options.moves
+    @drawInitialMoves()
 
   activate: (active) ->
     @active = active
@@ -39,7 +40,7 @@ window.GameBoard = class GameBoard
   highlight: (column) ->
     if @highlightColumn > -1 && @highlightColumn < @options.gridWidth
       @context.globalCompositeOperation = 'copy'
-      @context.fillStyle = 'rgba(0,0,0,0)'
+      @context.fillStyle = 'rgba(0, 0, 0, 0)'
       @clearEllipse(((@highlightColumn + 1) * @options.cellSize) - (@options.cellSize/2),
         ((@options.gridHeight - @grid[@highlightColumn].length) * @options.cellSize) - (@options.cellSize/2),
         (@options.cellSize * 4/10) + 1)
@@ -71,6 +72,17 @@ window.GameBoard = class GameBoard
         @overlayContext.lineTo((x - 1) * @options.cellSize, (y - 1) * @options.cellSize)
         @overlayContext.closePath()
         @overlayContext.fill()
+
+  drawInitialMoves: ->
+    column = 0
+    for counters in @grid
+      row = 0
+      for counter in counters
+        @context.fillStyle = counter
+        this.fillEllipse(((column + 1) * @options.cellSize) - (@options.cellSize/2),
+          ((7 - row) * @options.cellSize) - (@options.cellSize/2), (@options.cellSize * 4/10))
+        row++
+      column++
 
   fillEllipse: (x, y, radius) ->
     @context.beginPath()
