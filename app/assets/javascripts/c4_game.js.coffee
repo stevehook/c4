@@ -2,6 +2,8 @@ window.Game = class Game
   constructor: (grid, moves, status) ->
     console.log 'Game ctor'
     @gameBoard = new GameBoard($('#canvas'), $('#canvasOverlay'), {
+      grid: grid,
+      moves: moves,
       afterMove: $.proxy(this.afterMove, this)
     })
 
