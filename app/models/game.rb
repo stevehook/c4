@@ -107,6 +107,7 @@ class Game < ActiveRecord::Base
   end
 
   def after_find
+    self.status = self.status.to_sym
     self.moves = JSON.parse(self.moves)
     self.grid = JSON.parse(self.grid)
   end

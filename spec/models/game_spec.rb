@@ -19,6 +19,28 @@ describe Game do
     end
   end
 
+  context "when a game is read" do
+    before(:each) do
+      game = Game.new()
+      game.moves = [['red', 3], ['yellow', 3], ['red', 1], ['yellow', 1], ['red', 2]]
+      game.grid = [[], ['red', 'yellow'], ['red'], ['red', 'yellow'], [], [], []]
+      game.save
+      @game = Game.find(game.id)
+    end
+
+    it "should have status :in_play" do
+      @game.status.should == :in_play
+    end
+
+    it "should have pre-initialised grid array" do
+      @game.grid.should == [[], ['red', 'yellow'], ['red'], ['red', 'yellow'], [], [], []]
+    end
+
+    it "should have pre-initialised moves array" do
+      @game.moves.should == [['red', 3], ['yellow', 3], ['red', 1], ['yellow', 1], ['red', 2]]
+    end
+  end
+
   context "After red has three in a row horizontally" do
     before( :each ) do
       @game = Game.new
