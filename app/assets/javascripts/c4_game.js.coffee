@@ -1,12 +1,13 @@
 window.Game = class Game
-  constructor: (grid, moves, status) ->
+  constructor: (grid, moves, status, winner) ->
     console.log 'Game ctor'
     @gameBoard = new GameBoard($('#canvas'), $('#canvasOverlay'), {
       grid: grid,
       moves: moves,
+      winner: winner,
       afterMove: $.proxy(this.afterMove, this)
     })
-    @setFinished() if status == 'finished'
+    @setFinished(winner) if status == 'finished'
 
   afterMove: ->
     gameBoard = @gameBoard
@@ -14,6 +15,7 @@ window.Game = class Game
     if gameBoard.nextColour == 1
       gameBoard.activate false
       console.log gameBoard.grid
+      game = this
       $.ajax {
         dataType: "json",
         type: "POST",
@@ -24,13 +26,16 @@ window.Game = class Game
           console.log result
           new_move = result.moves[result.moves.length - 1]
           if result.status == 'finished'
-            @setFinished()
+            game.setFinished(result.winner)
           else
             gameBoard.move new_move[1]
             gameBoard.activate true
       }
 
-  setFinished: ->
-    $('.messagePanel').text 'Game over'
+  setFinished: (winner) ->
+    if winner
+      $('.messagePanel').text "Game over, #{winner} won"
+    else
+      $('.messagePanel').text "Game over, drawn"
     @gameBoard.activate false
 
