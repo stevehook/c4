@@ -33,6 +33,8 @@ body {
 
 ul.menu {
   float: right;
+  line-height: 50px;
+  vertical-align: bottom;
 }
 
 ul.menu li {
