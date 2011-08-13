@@ -31,6 +31,21 @@ body {
   margin: 0px auto;
 }
 
+ul.menu {
+  float: right;
+}
+
+ul.menu li {
+  list-style: none;
+  float: left;
+  padding-left: 10px;
+}
+
+ul.menu li a {
+  color: #eee;
+  text-decoration: none;
+}
+
 .headerTitle {
   line-height: 48px;
   font-size: 250%;
