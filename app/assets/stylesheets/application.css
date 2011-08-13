@@ -23,6 +23,7 @@ body {
   width: 100%;
   z-index: 4;
   font: 100% Arial;
+  border-bottom: 3px solid #666;
 }
 
 .headerTitle {
