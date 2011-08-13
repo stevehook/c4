@@ -46,6 +46,10 @@ ul.menu li a {
   text-decoration: none;
 }
 
+ul.menu li a:hover {
+  text-decoration: underline;
+}
+
 .headerTitle {
   line-height: 48px;
   font-size: 250%;
