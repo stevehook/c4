@@ -6,6 +6,7 @@ window.Game = class Game
       moves: moves,
       afterMove: $.proxy(this.afterMove, this)
     })
+    @setFinished() if status == 'finished'
 
   afterMove: ->
     gameBoard = @gameBoard
@@ -23,11 +24,13 @@ window.Game = class Game
           console.log result
           new_move = result.moves[result.moves.length - 1]
           if result.status == 'finished'
-            console.log 'Game over!'
-            $('.messagePanel').text 'Game over'
+            @setFinished()
           else
             gameBoard.move new_move[1]
             gameBoard.activate true
       }
 
+  setFinished: ->
+    $('.messagePanel').text 'Game over'
+    @gameBoard.activate false
 
