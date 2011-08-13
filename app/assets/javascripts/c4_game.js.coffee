@@ -26,6 +26,7 @@ window.Game = class Game
           console.log result
           new_move = result.moves[result.moves.length - 1]
           if result.status == 'finished'
+            gameBoard.move new_move[1] if result.winner == 'yellow'
             game.setFinished(result.winner)
           else
             gameBoard.move new_move[1]
