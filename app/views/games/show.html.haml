@@ -2,3 +2,5 @@
   %canvas#canvasOverlay{ width: 560, height: 560 }
   %canvas#canvas{ width: 560, height: 560 }
   = javascript_include_tag "c4_game"
+  :javascript
+    $(function() { new Game(#{@game.grid}, #{@game.moves}); });
