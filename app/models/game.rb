@@ -1,12 +1,15 @@
 class Game < ActiveRecord::Base
   after_initialize :init
+  after_find :after_find
   before_save :before_save
   after_save :after_save
 
   def init
-    self.status = :in_play
-    self.moves = []
-    self.grid = [[],[],[],[],[],[],[]]
+    if new_record?
+      self.status = :in_play
+      self.moves = []
+      self.grid = [[],[],[],[],[],[],[]]
+    end
   end
 
   def evaluate_status
@@ -99,6 +102,11 @@ class Game < ActiveRecord::Base
   end
 
   def after_save
+    self.moves = JSON.parse(self.moves)
+    self.grid = JSON.parse(self.grid)
+  end
+
+  def after_find
     self.moves = JSON.parse(self.moves)
     self.grid = JSON.parse(self.grid)
   end
