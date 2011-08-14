@@ -48,7 +48,12 @@ class Player
   end
 
   def is_saving_move(grid, column)
-    false
+    new_grid, row = apply_move(grid, column, opposing_colour)
+    has_connect_four(new_grid, opposing_colour)
+  end
+
+  def opposing_colour
+    @colour == 'red' ? 'yellow' : 'red'
   end
 
   def sets_up_two_in_row(grid, column)
@@ -56,7 +61,6 @@ class Player
   end
 
   def sets_up_three_in_row(grid, column)
-    false
   end
 
   def has_connect_four(grid, colour)
