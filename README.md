@@ -15,7 +15,7 @@ machine. It could be adapted for two-player gaming over the net.
 
 ##TODO List
 
-* Implement the game rules - end of game and results.
-* Implement a moderately 'intelligent' player to take on the user.
+* Implement a more 'intelligent' player to take on the user.
 * User registration - so that you can view your previous games and
   relive past victories.
+* Multi-player games.
