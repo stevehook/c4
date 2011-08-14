@@ -96,10 +96,9 @@ class Game < ActiveRecord::Base
     stack.length > x ? stack[x] : nil
   end
 
-  def next_move
-    # TODO: This is just a placeholder for now...
-    self.moves << ['yellow', 0]
-    self.grid[0] << 'yellow'
+  def apply_move(colour, column)
+    self.moves << [colour, column]
+    self.grid[0] << colour
   end
 
   def before_save

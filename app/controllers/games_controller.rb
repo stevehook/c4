@@ -26,7 +26,9 @@ class GamesController < ApplicationController
     @game.attributes = params[:game]
     @game.evaluate_status
     if @game.status == :in_play
-      @game.next_move
+      player = Player.new('yellow')
+      next_move = player.get_next_move(@game.grid)
+      @game.apply_move('yellow', next_move)
       @game.evaluate_status
     end
     @game.save!
