@@ -98,7 +98,7 @@ class Game < ActiveRecord::Base
 
   def apply_move(colour, column)
     self.moves << [colour, column]
-    self.grid[0] << colour
+    self.grid[column] << colour
   end
 
   def before_save
