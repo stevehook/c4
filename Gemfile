@@ -23,6 +23,10 @@ group :test, :development do
   gem 'jasmine'
 end
 
+group :production do
+  gem 'therubyracer-heroku', '0.8.1.pre3'
+end
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
