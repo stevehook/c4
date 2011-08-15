@@ -53,11 +53,17 @@ ul.menu li a:hover {
 }
 
 .headerTitle {
-  line-height: 48px;
   font-size: 250%;
-  vertical-align: top;
   color: #eee;
   margin: 5px 0px;
+}
+
+.headerTitle a {
+  color: #eee;
+  text-decoration: none;
+  top: 0px;
+  line-height: 68px;
+  vertical-align: top;
 }
 
 .header img {
@@ -103,7 +109,7 @@ ul.menu li a:hover {
 }
 
 #homePanel input {
-  font-size: 250%;
+  font-size: 150%;
 }
 
 .clear {
