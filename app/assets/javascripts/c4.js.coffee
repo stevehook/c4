@@ -7,9 +7,9 @@ window.GameBoard = class GameBoard
     @context = @canvas[0].getContext '2d'
     @overlayContext = @overlayCanvas[0].getContext '2d'
     @reset()
-    @overlayCanvas.click $.proxy(this.clicked, this)
-    @overlayCanvas.mousemove $.proxy(this.mouseMove, this)
-    @overlayCanvas.mouseleave $.proxy(this.mouseLeave, this)
+    @overlayCanvas.click @clicked
+    @overlayCanvas.mousemove @mouseMove
+    @overlayCanvas.mouseleave @mouseLeave
     @drawFrame()
     this.initialiseGameState() if @options.grid && @options.moves
 
@@ -28,10 +28,10 @@ window.GameBoard = class GameBoard
   activate: (active) ->
     @active = active
 
-  clicked: (e) ->
+  clicked: (e) =>
     @move Math.floor(e.offsetX/@options.cellSize) if @active
 
-  mouseMove: (e) ->
+  mouseMove: (e) =>
     if @active
       highlightColumn = Math.floor e.offsetX/@options.cellSize
       if highlightColumn != @highlightColumn
@@ -54,7 +54,7 @@ window.GameBoard = class GameBoard
         ((@options.gridHeight - @grid[@highlightColumn].length) * @options.cellSize) - (@options.cellSize/2),
         (@options.cellSize * 4/10) + 1)
 
-  mouseLeave: (e) ->
+  mouseLeave: (e) =>
     @highlight(-1)
 
   drawFrame: ->
@@ -108,7 +108,7 @@ window.GameBoard = class GameBoard
         clearInterval(interval)
     , delay)
 
-  start: (counter, column, colour) ->
+  start: (counter, column, colour) =>
     @context.globalCompositeOperation = 'copy'
     @context.fillStyle = 'rgba(0,0,0,0)'
     this.fillEllipse(((column + 1) * @options.cellSize) - (@options.cellSize/2),
@@ -129,6 +129,6 @@ window.GameBoard = class GameBoard
     @grid[column].push colour
     @moves.push [colour, column]
     @options.afterMove(@grid) if @options.afterMove
-    this.animateMove($.proxy(this.start, this), @options.cellSize/4, (7 - countersInColumn) * 4, column, colour)
+    this.animateMove(@start, @options.cellSize/4, (7 - countersInColumn) * 4, column, colour)
 
 
