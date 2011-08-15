@@ -1,36 +1,30 @@
 window.Game = class Game
   constructor: (grid, moves, status, winner) ->
-    console.log 'Game ctor'
     @gameBoard = new GameBoard($('#canvas'), $('#canvasOverlay'), {
       grid: grid,
       moves: moves,
       winner: winner,
-      afterMoveAnimation: $.proxy(this.afterMove, this)
+      afterMoveAnimation: @afterMove
     })
     @setFinished(winner) if status == 'finished'
 
-  afterMove: ->
-    gameBoard = @gameBoard
-    console.log 'afterMove'
-    if gameBoard.nextColour == 1
-      gameBoard.activate false
-      console.log gameBoard.grid
-      game = this
+  afterMove: =>
+    if @gameBoard.nextColour == 1
+      @gameBoard.activate false
       $.ajax {
         dataType: "json",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify { grid: gameBoard.grid, moves: gameBoard.moves }
+        data: JSON.stringify { grid: @gameBoard.grid, moves: @gameBoard.moves }
         beforeSend: (xhr) -> xhr.setRequestHeader("X-Http-Method-Override", "PUT")
-        success: (result) ->
-          console.log result
+        success: (result) =>
           new_move = result.moves[result.moves.length - 1]
           if result.status == 'finished'
-            gameBoard.move new_move[1] if result.winner == 'yellow'
-            game.setFinished(result.winner)
+            @gameBoard.move new_move[1] if result.winner == 'yellow'
+            this.setFinished(result.winner)
           else
-            gameBoard.move new_move[1]
-            gameBoard.activate true
+            @gameBoard.move new_move[1]
+            @gameBoard.activate true
       }
 
   setFinished: (winner) ->
