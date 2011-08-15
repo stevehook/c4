@@ -29,7 +29,9 @@ window.GameBoard = class GameBoard
     @active = active
 
   clicked: (e) =>
-    @move Math.floor(e.offsetX/@options.cellSize) if @active
+    if @active
+      @activate false
+      @move Math.floor(e.offsetX/@options.cellSize)
 
   mouseMove: (e) =>
     if @active
